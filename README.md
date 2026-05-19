@@ -8,7 +8,47 @@ Data + analysis for tracking famines globally, parallel in spirit to the `earthq
 - **The ≥1M and ≥5M severity bands disappear after 1960.** Recent decades still see 2–5 famines per decade, but in the 100k–500k range.
 - **Death-toll distribution is fat-tailed power law (α ≈ 0.76).** Same statistical regime Cirillo & Taleb document for war casualties.
 
-See `plots/` for the four charts.
+## Sample output
+
+### Decadal counts by death band
+
+Stacked bars: famines per decade by death band (100k–1M, 1M–5M, ≥5M). The 2020s decade is shaded grey because it's partial. The decadal distribution shows the disappearance of the ≥1M and ≥5M bands after 1960.
+
+**In plain English:** Each bar shows how many famines started in that 10-year period, with the bar color split by how many people died. Big red sections (≥5M deaths) dominate the 1870s–1960s; modern decades have only the lower bands.
+
+**Above vs. below the long-run mean:** Bars rising *above* the long-run decadal average (~5/decade) are busy famine periods (1870s with the Great Famine, 1900s, 1940s with the Bengal famine). Bars *below* the average (post-1960s except the 1990s) are quiet stretches.
+
+![Decadal counts by band](plots/02_decadal_counts_by_band.png)
+
+### Decadal intensity
+
+Two views: peak single-famine deaths per decade (left) and total deaths per decade (right).
+
+**In plain English:** Left panel: how big was the single deadliest famine of each decade? Right panel: how many people died in famines total per decade? Both use log scales because famine death counts span orders of magnitude.
+
+**Above vs. below the long-run trend:** The 1870s, 1900s, 1920s, 1940s, and 1958–62 bars rise high above any decadal average — those are the "great famine" decades. Post-1980 bars sit far below the long-run mean — confirming the "death-by-famine has collapsed" pattern visible in the catalog.
+
+![Decadal intensity](plots/05_decadal_intensity.png)
+
+### Great-famine timing (≥1M deaths)
+
+Cumulative ≥1M-death famine count over time vs a constant-rate reference + inter-event intervals.
+
+**In plain English:** Left panel: the grey dashed line is "what we'd see if great famines hit at a steady ~3-year clock." The red staircase shows when they actually occurred. After the 1975 Cambodia famine the staircase goes flat — no new entries.
+
+**Above vs. below the line:** When the staircase is *above* the grey reference, great famines have been arriving *faster* than the long-run average; *below* the line means *slower*. The catalog spent most of 1870–1965 tracking the reference closely, then crossed below in the late 20th C and has stayed below for 50 years — the post-1975 quiet stretch.
+
+![Great famine timing](plots/06_great_famine_timing.png)
+
+### Magnitude distribution
+
+Log-log survival function with power-law fit on the ≥200k-death tail.
+
+**In plain English:** Dots show "how many famines killed at least X people?" The dashed line through the right side shows the regular fat-tail pattern that connects "small common famines" to "rare huge ones."
+
+**Above vs. below the line:** A dot *above* the dashed line means more famines at that death-count than the scaling rule predicts — an excess at that severity. A dot *below* the line means fewer than predicted. For famines, the very-large tail (≥10M deaths: the Great Famine, the Great Chinese Famine, Bengal, Soviet) sits roughly *on* the line — meaning the worst events in history are exactly what the scaling rule expects (not particularly anomalous given the catalog).
+
+![Magnitude distribution](plots/07_magnitude_distribution.png)
 
 ## Files
 
@@ -32,11 +72,7 @@ Treat this as a research index, not a dataset:
 - Excluded from all statistical plots.
 
 ### Analysis
-- `make_plots.py` — generates the four plots below.
-- `plots/02_decadal_counts_by_band.png` — stacked bars, famines per decade by death band.
-- `plots/05_decadal_intensity.png` — peak single-famine deaths per decade + total deaths per decade.
-- `plots/06_great_famine_timing.png` — cumulative ≥1M-death famines vs. constant-rate reference + inter-event intervals.
-- `plots/07_magnitude_distribution.png` — log-log survival function (Gutenberg-Richter analog), power-law fit.
+- `make_plots.py` — generates the four plots above.
 
 ## Reproducing the plots
 
@@ -55,6 +91,10 @@ Adapted from a parallel earthquake-tracking project; transferable to other rare-
 - **Rolling/cumulative views for rare events.** Inter-event intervals and cumulative-vs-constant-rate sidestep calendar-bin noise.
 - **Log-scaled severity.** Plot 05-left and plot 07 use log scales because death tolls span 10⁵ to 10⁷.
 - **Power-law fit on the tail only.** Plot 07 fits the line on deaths ≥ 200k to avoid the catalog-completeness floor.
+
+## Intended use
+
+Data source for famine correlation tests in [`Biblejustin/correlations`](https://github.com/Biblejustin/correlations).
 
 ## Open work
 
