@@ -1,6 +1,6 @@
 # famines-tracking
 
-Data + analysis for tracking famines globally, parallel in spirit to the `earthquakes` and `spaceweather` tracking projects.
+Data + analysis for tracking famines globally. One of 10 sibling repos analyzed together — see the [`correlations`](https://github.com/Biblejustin/correlations) hub for the cross-repo analysis.
 
 ## Quick findings
 
